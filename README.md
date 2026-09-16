@@ -1,4 +1,4 @@
-# WIT Student Python Examples
+# Student Python Examples
 
 A small collection of examples showing how a frontend "talks to" a backend,
 and how the same ideas power file automation. Built for students at WIT.
