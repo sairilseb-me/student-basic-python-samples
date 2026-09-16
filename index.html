@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>WIT Student Python Examples</title>
+    </head>
+    <body>
+        <h1>Welcome to the WIT Student Python Examples</h1>
+        <p>This is a collection of Python examples for students at WIT.</p>
+        <br>
+        <br>
+        <h2>Request Example</h2>
+        <button id="button1" @click="requestExample">Request</button>
+        <p>Open the browser console to see the results.</p>
+        <br>
+        <br>
+        <h2>Fetch Specific Student</h2>
+        <input type="text" v-model="studentId" placeholder="Enter student ID">
+        <button id="button2" @click="getSpecificStudent">Fetch Student</button>
+        <p>Here is the result: <span id="result-specific-student"></span></p>
+        <script src="index.js"></script>
+    </body>
+</html>
