@@ -11,7 +11,6 @@ a document-signing tool) — same concepts, much smaller.
 index.html               Plain HTML page — the frontend example (no build step)
 index.js                 Plain JS — calls the API with fetch()
 frontend/                Vue 3 + Vite version of the same frontend
-venv/                     Python virtual environment (already created, at repo root)
 webinar_demo/
   A_api_server.py         Flask backend — the API both frontends talk to
   B_request_basics.py     Same requests, made from Python (requests lib), narrated
@@ -40,15 +39,21 @@ webinar_demo/
 
 ---
 
-## 2. Set up Python and install dependencies
+## 2. Create a virtual environment and install dependencies
 
-A virtual environment already exists at the repo root (`venv/`). From the
-repo root:
+`venv/` is **not** committed to this repo (it's git-ignored) — everyone who
+clones it needs to create their own, once per clone. The commands differ
+slightly by OS.
+
+### macOS / Linux
 
 ```bash
 cd /Applications/XAMPP/xamppfiles/htdocs/personal_projects/wit-student-python-examples
 
-# Activate the virtual environment
+# Create the virtual environment (one-time — creates a venv/ folder here)
+python3 -m venv venv
+
+# Activate it
 source venv/bin/activate
 # Your prompt should now start with (venv)
 
@@ -56,7 +61,50 @@ source venv/bin/activate
 pip install -r webinar_demo/requirements.txt
 ```
 
-To leave the virtual environment later, run `deactivate`.
+Next time you come back to the project, you don't need to recreate it — just
+activate it again:
+
+```bash
+source venv/bin/activate
+```
+
+### Windows
+
+Open **Command Prompt** or **PowerShell**:
+
+```powershell
+cd C:\path\to\wit-student-python-examples
+
+# Create the virtual environment (one-time — creates a venv\ folder here)
+python -m venv venv
+
+# Activate it
+venv\Scripts\activate
+# Your prompt should now start with (venv)
+
+# Install all dependencies (Flask, flask-cors, requests, pypdf, reportlab, pillow, etc.)
+pip install -r webinar_demo\requirements.txt
+```
+
+Next time you come back to the project, just activate it again:
+
+```powershell
+venv\Scripts\activate
+```
+
+> If PowerShell blocks the activation script with an "execution policy"
+> error, either use Command Prompt instead, or run this once in PowerShell
+> (as your normal user, not admin):
+> `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
+
+### Both platforms
+
+- Use `python3` on macOS/Linux and `python` on Windows — on Windows,
+  `python3` often isn't recognized even though `python` is.
+- To leave the virtual environment when you're done, run `deactivate`
+  (same command on every OS).
+- You'll know it's active because your terminal prompt is prefixed with
+  `(venv)`.
 
 ---
 
@@ -129,8 +177,15 @@ With the backend running in its own terminal, open a second terminal, `cd`
 into `webinar_demo/`, and activate the same virtual environment:
 
 ```bash
+# macOS / Linux
 cd webinar_demo
 source ../venv/bin/activate
+```
+
+```powershell
+# Windows
+cd webinar_demo
+..\venv\Scripts\activate
 ```
 
 ### `B_request_basics.py` — narrated walkthrough
