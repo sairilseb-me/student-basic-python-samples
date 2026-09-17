@@ -45,6 +45,19 @@ webinar_demo/
 clones it needs to create their own, once per clone. The commands differ
 slightly by OS.
 
+`venv` itself is a built-in Python module, not a separate package — on
+macOS and Windows it ships with Python, so `python3 -m venv venv` (or
+`python -m venv venv`) just works. On Debian/Ubuntu Linux, the standalone
+Python install often leaves it out, so install it first:
+
+```bash
+sudo apt update
+sudo apt install python3-venv
+```
+
+If `python3 -m venv venv` fails with something like
+`ensurepip is not available`, this is almost always the fix.
+
 ### macOS / Linux
 
 ```bash
